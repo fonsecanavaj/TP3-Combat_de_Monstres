@@ -115,7 +115,6 @@ Niveau de vie: 20""")
         else:
             force_adversaire = random.randint(6, 12)
 
-
     # Si le choix est de contourner, le niveau de vie diminue de 1
     elif choix == 2:
         print("\nVous avez reçu une penalité de 1 point")
