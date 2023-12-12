@@ -1,5 +1,5 @@
 # Julieta María Fonseca Nava
-# 01/10/23
+# 12/12/23
 # TP3 - Combat de Monstres
 
 # Importer la librairie et définir les variables
@@ -14,7 +14,7 @@ score_dé2 = random.randint(1, 6)
 nombre_victoires = 0
 nombre_defaites = 0
 victoires_consecutives = 0
-start = 1
+choix = 0
 
 # Définir le dictionnaire pour les options du jeu de l'utilisateur
 menu = { "1-": "Combattre cet adversaire",
@@ -47,15 +47,8 @@ def new_status():
     print(f"""\nNiveau de vie de l'usager: {niveau_vie}
 Nombre de victoires consécutives: {victoires_consecutives}""")
 
-# Le code s'arrête
-# Output = L'ordinateur affiche des politesses
-def exit_game():
-    print("\nMerci et au revoir...")
-    exit()
-
-
 # Le jeu s'execute en continu, sauf si exit_game() est appelée
-while start == 1:
+while choix != 4:
     print(f"\nVous tombez face à face avec un adversaire de difficulté {force_adversaire}.\n")
     for k,v in menu.items():
         print(k,v)
@@ -115,18 +108,24 @@ Niveau de vie: 20""")
         else:
             force_adversaire = random.randint(6, 12)
 
+
     # Si le choix est de contourner, le niveau de vie diminue de 1
     elif choix == 2:
         print("\nVous avez reçu une penalité de 1 point")
         niveau_vie -=1
         print(f"Niveau de vie: {niveau_vie}")
+        score_dé1 = random.randint(1, 6)
+        score_dé2 = random.randint(1, 6)
+        if nombre_victoires < 3:
+            force_adversaire = random.randint(1, 6)
+        else:
+            force_adversaire = random.randint(6, 12)
 
     # Si le choix est de voir les règles, elles s'affichent
     elif choix == 3:
         rules()
 
-    # Si le choix est 4, le jeu s'arrête
-    else:
-        exit_game()
-
-    start = 1
+# Si le choix est 4, le jeu s'arrête
+# Output = L'ordinateur affiche des politesses
+print("\nMerci et au revoir...")
+exit()
